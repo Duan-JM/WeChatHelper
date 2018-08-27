@@ -46,3 +46,7 @@ WeCharHelper是基于Tkkk-iOSer的WeChatPlugin-MacOS微信插件的LaunchBar第�
 
 *注：由于launchBar的自身原因，在发送内容的时候，以下拉菜单中显示的消息为准，有时会延迟大约2ms左右。*
 
+TODO
+----
+1. 使用javascript来重构程序
+
