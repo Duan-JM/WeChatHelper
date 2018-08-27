@@ -1,45 +1,39 @@
 #!/usr/local/bin/python3
+# -*- coding: utf-8 -*-
+"""
+@author: Vincent Duan
+@contact: <vincent.duan95@outlook.com>
+@file: sendMsg.py
+@time: 08/27/18, 17:52
+"""
 import sys
-import json
 import os
+import subprocess as sp
 import requests
-import search
 
+# init
+my_env = os.environ.copy()
 items = []
+
+
 for ag in sys.argv[1:]:
-    # item = {}
     # init
     userId = ""
     msgContent = ""
+    baseUrl = 'http://127.0.0.1:52700/wechat-plugin/'
 
     if len(ag.split('/')) > 1:
         userId = ag.split('/')[0]
         msgContent = ag.split('/')[1]
     else:
         userId = ag
-    baseUrl = 'http://127.0.0.1:52700/wechat-plugin/'
+
     if msgContent:
         url = baseUrl + 'send-message'
         data = {'userId': userId, 'content': msgContent}
     else:
         url = baseUrl + 'open-session'
         data = {'userId': userId}
+        my_command = "open -a WeChat".split(' ')
+        sp.call(my_command, env=my_env)
     req = requests.post(url=url, data=data)
-
-
-#baseUrl = os.getenv('baseUrl')
-    #userId = sys.argv[1]
-    #url = baseUrl + 'open-session'
-    #data = {'userId': userId}
-    #r = web.post(url=url,data=data)
-
-#import sys,os
-#import requests
-
-#msgContent = 'testFromMyScript'
-#userId = 'wxid_xu27mjox3lcs12'
-#baseUrl = 'http://127.0.0.1:52700/wechat-plugin/'
-#url = baseUrl + 'send-message'
-#data = {'userId':userId, 'content': msgContent}
-#r = requests.post(url=url,data=data)
-# r.raise_for_status()

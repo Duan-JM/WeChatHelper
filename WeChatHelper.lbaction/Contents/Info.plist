@@ -53,7 +53,5 @@
 	</dict>
 	<key>LBTextInputTitle</key>
 	<string>微信名/发送内容</string>
-	<key>LSMinimumSystemVersion</key>
-	<string>10.12</string>
 </dict>
 </plist>
